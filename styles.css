@@ -1,18 +1,30 @@
+/*Set default background color*/
 body {
   background: #080808;
 }
 
+
+/*Dark Green color*/
 h1, a, p {
   color: #008000;
 }
 
-a,p {
+a, p {
   font-size: 22px;
 }
+
+
+/*Add border for code range*/
+div {
+  border-left: 4px solid red;
+  padding-left: 10px;
+}
+
 
 hr {
   border-top: 1px solid black;
 }
+
 
 button {
   background-color: none; 
