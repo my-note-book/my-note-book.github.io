@@ -1,21 +1,28 @@
+
 /*Set default background color*/
 body {
-  background: #080808;
+/*  background: #080808;*/
+  background-color: white;
 }
-
 
 /*Dark Green color*/
 h1, a, p {
   color: #008000;
-  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 a, p {
   font-size: 22px;
 }
 
+nav a:hover {
+  background-color: white;
+}
 
-/*Add border for code range*/
+nav a {
+  text-decoration: none;
+}
+
+
 div {
   border-left: 4px solid red;
   padding-left: 10px;
@@ -27,9 +34,24 @@ hr {
 }
 
 
-button {
-  background-color: none; 
-  color: blue; 
-  border: none;
-  font-size: 22;
+#menuBtn {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 5px;
+  margin-right: 5px;
+  overflow: hidden;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  color: red;
+  text-align: right;
+}
+
+#menuBtn a {
+  color: red;
+  text-decoration: none;
+}
+
+#menuBtn a:hover {
+  background-color: yellow;
 }
