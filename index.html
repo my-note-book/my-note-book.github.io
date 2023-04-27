@@ -5,246 +5,194 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>My Note Book</title>
 	<link rel="stylesheet" href="styles.css">
-
 	<script src="set-background-color.js"></script>
 </head>
 
 <body id="body">
-<h1 id="navigation">Navigation</h1>
-<nav>
-	<a href="#exsamples">Practical Examples</a>
-	<a>|</a>
-	<a href="#app">Application</a>
-	<a>|</a>
-	<a href="#wb">Workbook</a>
-	<a>|</a>
-	<a href="#ws">Worksheet</a>
-	<a>|</a>
-	<a href="#rng">Range</a>
-	<a>|</a>
-	<a href="#cells">Cells</a>
-	<a>|</a>
-	<a href="#algorithm">Algorithm</a>
-	<a>|</a>
-	<a href="#errorsHandle">Errors Handle</a>
-	<a>|</a>
-	<a href="#event">Event</a>
-	<a>|</a>
-	<a href="#fileText">File Text</a>
-	<a>|</a>
-	<a href="#uf">UserForm</a>
-	<a>|</a>
-	<a href="#folder">Folder</a>
-	<a>|</a>
-	<a href="#outlook">Outlook</a>
-	<a>|</a>
-	<a href="#otherWb">Other Workbook</a>
-	<a>|</a>
-	<a href="#otherApp">Other Application</a>
-	<a>|</a>
-	<a href="#html">HTML</a>
-	<a>|</a>
-	<a href="#english">English Vocabulary</a>
-	<a>|</a>
-	<a><button id="button" onclick="changeColor();">Change background color</button></a>
-</nav>
-<hr>
+	<h1 id="header">Navigation</h1>
+	<nav>
+		<a href="#examples">Examples</a>
+		<a >&ensp;|&ensp;</a>
+		<a href="#content">Content</a>
+		<a >&ensp;|&ensp;</a>
+		<a href="#objects">Objects</a>
+		<a >&ensp;|&ensp;</a>
+		<a href="#english">English</a>
+		<a >&ensp;|&ensp;</a>
+		<a href="#html">HTML</a>
+		<a >&ensp;|&ensp;</a>
+		<a href="#about">About</a>
+		<a >&ensp;|&ensp;</a>
+		<a id="demo" onclick="changeColor()">Color</a>
+	</nav>
+	<hr>
 
-<h1 id="guide">Guide</h1>
-	<p>-Đây là ghi chép cách code trong VBA.	</p>
-	<p>-Nơi viết code là 1 file xlsm riêng biệt.</p>
-	<p>-Đối tượng làm việc là các nội dung như dưới đây (ví dụ: Application, Workbook, Worksheet...).</p>
-	<p>-Thuật toán (algorithm) là nơi ghi các logic code.</p>
-<hr>
+	<ul id="menuBtn"><a href="#header">Top</a></ul>
 
-<h1 id="exsamples">Practical Examples</h1>
-	<p>1) Điền một mảng vào hàng (array to rows)</p>
-		<div>
-			<p>Dim list as Variant</p>
-			<p>list = Array("A","B","C")</p>
-			<p>Range("A1:C1").value = list</p>
-		</div>
+	<h1 id="examples">Examples</h1>
+		<p>Điền chữ vào ô</p>
+		<p>Điền số vào ô</p>
+		<p>Điền công thức vào ô</p>
+		<p>Điền công thức vào nhiều ô</p>
 		<br>
+	<hr>
 
-	<p>2) Điền một mảng vào hàng (array to rows, but fill each)</p>
-		<div>
-			<p>Dim list As Variant</p>
-			<p>list = Split("A, B, C", ",")</p>
-			<p>For i = 0 To UBound(list)</p>
-			<p>Sheet1.Cells(2, i + 2).Value = list(i)</p>
-			<p>Next i</p>
-		</div>
+	<h1 id="content">Content</h1>
+		<p>Điền chữ vào ô</p>
+		<p>Điền số vào ô</p>
+		<p>Điền công thức vào ô</p>
+		<p>Điền công thức vào nhiều ô</p>
 		<br>
-
-	<p>3) Điền mảng vào cột (array to column)</p>
-		<div>
-			<p>Dim arr as Variant</p>
-			<p>arr = Array("A","B","C")</p>
-			<p>Range("A1:A3").value = Application.Transpose(arr)</p>
-		</div>
-		<br>
-
-	<p>4) Cài đặt thời gian đợi nhỏ hơn 1 giây</p>
-		<div>
-			<p>Dim waitTime As Double</p>
-			<p>waitTime = 0.1</p>
-			<p>Application.Wait [now()] + waitTime / 86400</p>
-		</div>
-
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="app">Application</h1>
-	<p>1) Tắt cập nhật màn hình
-		<div>
-			<p>Application.ScreenUpdating = False</p>
-		</div>
-		<br>
-
-	<p>2) Bật cập nhật màn hình 
-		<div>
-			<p>Application.ScreenUpdating = True</p>
-		</div>
-		<br>
-
-	<p>3) Hiển thị Dialog và lấy tên file sau khi chọn</p>
-		<div>
-			<p>Dim fileName as String</p>
-			<p>fileName = Application.GetOpenFilename()</p>
-			<p>Debug.Print fileName</p>
-		</div>
-
-	<p>4) Cài đặt thời gian đợi cho đến khi chạy code tiếp theo</p>
-		<div>
-			<p>Application.Wait(Now + TimeValue("0:00:10"))</p>
-		</div>
 		
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="wb">Workbook</h1>
-	<p>Sao chép hoặc di chuyển files (.xls, .pdf...), folders từ folder này sang folder khác. Có thể thay CopyFile = MoveFile, MoveFolder</p>
-		<div>	
-			<p>Dim objectFiles = "*"</p>
-			<p>Dim fso As FileSystemObject</p>
-			<p>Set fso = CreateObject("Scripting.FileSystemObject")</p>
-			<p>fso.CopyFile soursePath & objectFiles, destinationPath</p>
-		</div>
+		<div><p>Điều chuỗi vào nhiều ô trong hàng</p></div>
+		<p>Dim list as Variant</p>
+		<p>list = Array("A","B","C")</p>
+		<p>Range("A1:C1").value = list</p>
+		<br>
+		
+		<div><p>Điền chuỗi vào nhiều ô trong cột</p></div>
+		<p>Dim arr as Variant</p>
+		<p>arr = Array("A","B","C")</p>
+		<p>Range("A1:A3").value = Application.Transpose(arr)</p>
 		<br>
 
-	<p>Khai báo</p>
-		<div>
-			<p>Dim wb as Workbook</p>
-		</div>
+		<p>Đánh giá dữ liệu theo cột</p>
+		<p>Lấy dữ liệu từ nhiều ô chứa vào mảng</p>
+		<p>In toàn bộ dữ liệu đã lấy vào mảng</p>
+		<p>So sánh 2 cột tìm sự khác biệt</p>
+		<p>Lấy toàn bộ tên Sheets</p>
+		<p>Đổi tên toàn bộ các Sheets trong File hiện tại</p>
+		<p>Sắp xếp các Sheets trong file hiện tại theo thứ tự Alphabe</p>
+		<br>
 
-	<p>Mở, đóng</p>
-	<p>Tạo mới, xóa, đổi tên</p>
-	<br>
+		<div><p>Lấy toàn bộ tên Files trong Folder</p></div>
+		<p>Dim filesName as String</p>
+		<p>filesName = Dir("C:\Data\*.*")</p>
+		<p>Do While Len(filesName) > 0</p>
+		<p>&emsp;Debug.Print filesName</p>
+		<p>&emsp;filesName = Dir</p>
+		<p>Loop</p>
+		<br>
+		
+		<div><p>Lấy tên một phần mềm nào đó trên màn hình desktop</p></div>
+		
+		<div><p>Xóa toàn bộ Files trong Folder</p></div>
 
+		<div><p>Mở file Excel</p></div>
 
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<div><p>Mở file PDF</p></div>
+		
+		<div><p>Mở AS400</p></div>
+		
+		<div><p>Hiển thị danh sách lên ComboBox trong UserForm</p></div>
+		
+		<div><p>Lấy dòng cuối trong cột</p></div>
+		
+		<div><p>Lấy cột cuối trong bảng dữ liệu</p></div>
+		
+		<div><p>Chọn vùng dữ liệu</p></div>
+		
+		<div><p>Chạy chuỗi hành động Sendkeys</p></div>
+		<br>
 
-<h1 id="ws">Worksheet</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<div><p>Chỉ định thời gian đợi trước khi chạy code tiếp theo</p></div>
+		<p>Dim waitTime As Double</p>
+		<p>waitTime = 0.1</p>
+		<p>Application.Wait [now()] + waitTime / 86400</p>
+		<p>Application.Wait(Now + TimeValue("0:00:10"))</p>
+		<br>
+			
+		<p>Lấy dữ liệu từ 1 file Excel khác bằng phương pháp sao chép</p>
+		<p>Lấy dữ liệu từ 1 file Excel khác bằng phương pháp dùng SQL</p>
+		<p>Nối 2 bảng dữ liệu bằng phương pháp dùng SQL</p>
+		<p>Thêm mới 1 file Text</p>
+		<p>Lấy dữ liệu từ file Text</p>	
+		<p>Thêm mới 1 file Excel</p>
+		<br>
 
-<h1 id="rng">Range</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<div><p>Tắt cập nhật màn hình</p></div>
+		<p>Application.ScreenUpdating = False</p>
+		<br>
 
-<h1 id="cells">Cells</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<div><p>Bật cập nhật màn hình</p></div>
+		<p>Application.ScreenUpdating = True</p>
+		<br>
 
-<h1 id="algorithm">Algorithm</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<div><p>Sao chép hoặc di chuyển files (.xls, .pdf...), folders từ folder này sang folder khác. Có thể thay CopyFile = MoveFile, MoveFolder</p></div>
+		<p>Dim objectFiles = "*"</p>
+		<p>Dim fso As FileSystemObject</p>
+		<p>Set fso = CreateObject("Scripting.FileSystemObject")</p>
+		<p>fso.CopyFile soursePath & objectFiles, destinationPath</p>
+		<br>
 
-<h1 id="errorsHandle">Errors Handle</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	<hr>
 
-<h1 id="event">Event</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="fileText">File Text</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="uf">UserForm</h1>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="folder">Folder</h1>
-	<p>Khai báo (FSO: File System Object)</p>
-	<br>
-	
-	<p>Lấy toàn bộ tên file trong folder</p>
-		<div>
-			<p>Dim filesName as String</p>
-			<p>filesName = Dir("C:\Data\*.*")</p>
-			<p>Do While Len(filesName) > 0</p>
-			<p>Debug.Print filesName</p>
-			<p>filesName = Dir</p>
-			<p>Loop</p> 
-		</div>
-
-	<p>Kiểm tra sự tồn tại file trong folder</p>
-	<p>Thêm, xóa 1 file trong folder</p>
-	<p>Xóa toàn bộ file trong folder</p>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="outlook">Outlook</h1>
-	<p>Khai báo, đóng mở</p>
-	<p>Create new mail (No Signature)</p>
-	<p>Create new mail (Including Signature)</p>
-	<p>Get all mail subject in Sub Folder</p>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="otherWb">Other Workbook</h1>
-	<p>Khai báo, mở, đóng</p>
-	<p>Lấy dữ liệu từ 1 file khác (Using Copy Paste)</p>
-	<p>Lấy dữ liệu từ 1 file khác (Using SQL Query)</p>
-	<p>Ghi dữ liệu vào 1 file khác (Using Copy Paste)</p>
-	<p>Ghi dữ liệu vào 1 file khác (Using SQL Query)</p>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="otherApp">Other Application</h1>
-	<p>Mở một phần mềm bất kỳ trên màn hình (application, file pdf, file excel...)</p>
-	<p>Lấy dữ liệu từ AS400</p>
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="html">HTML</h1>
-	<p>Link với 1 file khác: thêm rel="stylesheet" href="styles.css trong tác link. Tên đuôi file có thể link .html, .css, .php, .js</p>
-	<br>
-
-	<p>Link với 1 phần nào đó trong trang: dùng id</p>
-	<p>Bước 1. Tạo thẻ a trong tag Navi: href="#id name"</p>
-	<p>Bước 2. Thêm id vào tag muốn link tới: id = "id name"</p>
-	<br>
-
-	<p>Cách dùng tag div: div không có nghĩa, dùng làm tên tag khi tạo 1 phần nào đó khác với các tag có nghĩa như navi, menu, header, footer.</p>
-	<br>
-
-	<a href="#navigation">Back Navigation</a>
-<hr>
-
-<h1 id="english">English Vocabulary</h1>
-	<p>algorthm: thuật toán (logic code)</p>
-	<p>id: indentification (nhận dạng, nhận diện)</p>
-	<br>
-
-	<p>Lbound, Ubound: Trả về giá trị lớn nhỏ nhất và lớn nhất trong Array.</p>
+	<h1 id="objects">Objects</h1>
+		<p>Application</p>
+		<p>Workbook</p>
+		<p>Worksheet</p>
+		<p>Range</p>
+		<p>Cell</p>
+		<p>InputBox</p>
+		<p>MsgBox</p>
+		<p>Immediate</p>
+		<p>User Form</p>
+	<hr>
+	<a href="#header">Back navigation</a>
 
 
-	<a href="#navigation">Back Navigation</a>
-<hr>
+	<h1 id="english">English</h1>
+		<div><p>Noun</p></div>
+		<p>startup: khởi nghiệp, cũng dùng để diễn tả bắt đầu 1 cái gì đó</p>
+		<p>startups: các công ty khởi nghiệp</p>
+		<p>pedestals: bệ</p>
+		<p>stands: giá đỡ</p>
+		<p>furniture: đồ nội thất</p>
+		<p>piece: cái (thêm vào khi đếm bộ phận của máy móc...diễn tả 1 phần của cái gì đó.</p>
+		<br>
+		
+		<div><p>Verb</p></div>
+		<p>install: đặt máy hoặc thiết bị ở vị trí cố định để sử dụng, đặt ai đó ở vị trí nào đó</p>
+		<p></p>
+		<br>
+
+		<div><p>Adjective</p></div>
+		<p>whole: toàn bộ (all of, entire)</p>
+		<br>
+		
+		<div><p>Example</p></div>
+		<p>a variety of things: nhiều thứ khác nhau</p>
+		<p>commissioning: vận hành thử nghiệm</p>
+		<p>Installtion and commissioning service of 2 processing machines: Dịch vụ lắp đặt và vận hành thử 2 máy gia công</p>
+		<br>
+
+		
+	<hr>
+
+	<h1 id="html">HTML</h1>
+		<div><p>Cách thêm dấu cách, khi code thì không có dấu + </p></div>
+		<p>Regular space: & + nbsp;</p>
+		<p>Two spaces gap: & + ensp;</p>
+		<p>Four spaces gap: & + emsp;</p>
+		<br>
+
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		
+	<hr>
+
+	<h1 id="about">About</h1>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	<a href="#header">Back navigation</a>
 
 </body>
 </html>
