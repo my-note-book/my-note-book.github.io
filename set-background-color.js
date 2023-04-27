@@ -1,4 +1,5 @@
-var colors = ["white", "#080808"];
+
+var colors = ["#080808", "white"];
 var colorIndex = 0;
 
 function changeColor() {
